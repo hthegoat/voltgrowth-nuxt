@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  --color-background: #0b1326;
+  --color-surface: #0b1326;
+  --color-surface-lowest: #060e20;
+  --color-surface-low: #131b2e;
+  --color-surface-card: #171f33;
+  --color-surface-high: #222a3d;
+  --color-surface-highest: #2d3449;
+  --color-volt-amber: #f59e0b;
+  --color-volt-glow: #ffc174;
+  --color-volt-cyan: #4cd7f6;
+  --color-volt-green: #56e5a9;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: #0b1326;
+  color: #dae2fd;
+}
+
+/* Custom blueprint subtle grid backdrop */
+.blueprint-grid {
+  background-size: 36px 36px;
+  background-image:
+    linear-gradient(to right, rgba(45, 52, 73, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(45, 52, 73, 0.25) 1px, transparent 1px);
+}

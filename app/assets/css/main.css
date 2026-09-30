@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  /* FONT: body text. Keep in sync with the Google Fonts link in nuxt.config.ts */
+  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: #f6f7f5;
+  --color-steel: #e3e6e3;
+  --color-steel-dark: #c9cdc9;
+  --color-graphite: #1c1f22;
+  --color-slate: #5b6166;
+  --color-cable: #f5c400;
+  --color-cable-dark: #d9ad00;
+  --color-fault: #b3261e;
+}
+
+/* FONT: headline typeface. Change family, weight and tracking here to restyle every heading at once. */
+:root {
+  --display-family: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --display-weight: 800;
+  --display-tracking: -0.035em;
+}
+
+@utility font-display {
+  font-family: var(--display-family);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--display-tracking);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-paper);
+  color: var(--color-graphite);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-cable);
+  color: var(--color-graphite);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-graphite);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
