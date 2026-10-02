@@ -28,19 +28,21 @@ const changeZip = () => {
 const onSubmit = async () => {
   sending.value = true
   sendError.value = ''
+  const type = status.value === 'taken' ? 'waitlist' : 'claim'
   try {
     await $fetch('/api/lead', {
       method: 'POST',
       body: {
         ...form,
         zip: zip.value,
-        type: status.value === 'taken' ? 'waitlist' : 'claim',
+        type,
         callTest: wantsCallTest.value,
+        attribution: getAttribution(),
       },
     })
     sent.value = true
-    // Fires a Google Ads / GA4 lead event if you've added the Google tag.
-    ;(window as any).gtag?.('event', 'generate_lead', { zip: zip.value, type: status.value })
+    // Google Ads form conversion (only fires once the Google tag IDs are set in data/site.ts)
+    trackLeadConversion({ email: form.email, phone: form.phone, zip: zip.value, type })
   } catch (err: any) {
     sendError.value =
       err?.data?.statusMessage || 'Your details didn\'t send. Check your connection and try again.'

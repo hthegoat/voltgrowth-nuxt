@@ -20,11 +20,22 @@ import { site } from '~/data/site'
         <AreaChecker />
       </div>
 
-      <div class="flex max-w-[34rem] items-center gap-4 self-start border-l-4 border-cable pl-4 lg:col-span-7 lg:row-start-3">
-        <p class="text-base leading-snug">
-          <span class="font-display text-2xl">{{ site.revenueProof }}</span>
-          in revenue generated for the businesses I run ads for through {{ site.parent }}.
-        </p>
+      <div class="flex max-w-[34rem] flex-col gap-7 self-start lg:col-span-7 lg:row-start-3">
+        <div class="flex items-center gap-4 border-l-4 border-cable pl-4">
+          <p class="text-base leading-snug">
+            <span class="font-display text-2xl">{{ site.revenueProof }}</span>
+            in revenue generated for the businesses I run ads for through {{ site.parent }}.
+          </p>
+        </div>
+
+        <figure v-if="site.testimonial.quote" class="border-t border-steel-dark pt-5">
+          <blockquote class="text-lg leading-relaxed">
+            &ldquo;{{ site.testimonial.quote }}&rdquo;
+          </blockquote>
+          <figcaption class="mt-2.5 text-sm text-slate">
+            <span v-if="site.testimonial.name" class="font-semibold text-graphite">{{ site.testimonial.name }}, </span>{{ site.testimonial.role }}
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
